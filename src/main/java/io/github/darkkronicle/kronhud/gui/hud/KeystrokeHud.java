@@ -64,7 +64,7 @@ public class KeystrokeHud extends AbstractHudEntry {
         // Space
         keystrokes.add(new Keystroke(new SimpleRectangle(0, 54, 53, 7), scaledPos, client.options.keyJump, (stroke, matrices) -> {
             SimpleRectangle bounds = stroke.bounds;
-            rect(matrices, bounds.x() + stroke.offset.getX() + 2, bounds.y() + stroke.offset.getY() + 2, bounds.width() - 4, 1, stroke.getFGColor().color());
+            rect(matrices, bounds.x() + stroke.offset.getX() + 2, bounds.y() + stroke.offset.getY() + 2, bounds.width() - 4, 1, stroke.getFGColor().withAlpha(150).color());
         }, getStorage().unselected, getStorage().selected, getStorage().unselectedFG, getStorage().selectedFG));
         KeyBinding.unpressAll();
         KeyBinding.updatePressedStates();
@@ -127,7 +127,7 @@ public class KeystrokeHud extends AbstractHudEntry {
     public Keystroke createFromString(SimpleRectangle bounds, DrawPosition offset, KeyBinding key, String word) {
         return new Keystroke(bounds, offset, key, (stroke, matrices) -> {
             SimpleRectangle strokeBounds = stroke.bounds;
-            client.textRenderer.draw(matrices, word, (strokeBounds.x() + stroke.offset.getX() + ((float) strokeBounds.width() / 2)) - ((float) client.textRenderer.getWidth(word) / 2), strokeBounds.y() + stroke.offset.getY() + ((float) strokeBounds.height() / 2) - 4, stroke.getFGColor().color());
+            client.textRenderer.draw(matrices, word, (strokeBounds.x() + stroke.offset.getX() + ((float) strokeBounds.width() / 2)) - ((float) client.textRenderer.getWidth(word) / 2), strokeBounds.y() + stroke.offset.getY() + ((float) strokeBounds.height() / 2) - 4, stroke.getFGColor().withAlpha(150).color());
         }, getStorage().unselected, getStorage().selected, getStorage().unselectedFG, getStorage().selectedFG);
     }
 
