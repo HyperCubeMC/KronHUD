@@ -13,7 +13,7 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ClientBossBar;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.boss.BossBar;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -27,9 +27,9 @@ public class BossBarHud extends AbstractHudEntry {
 
     public static final Identifier ID = new Identifier("kronhud", "bossbarhud");
     private static final Identifier BARS_TEXTURE = new Identifier("textures/gui/bars.png");
-    private final BossBar placeholder = new CustomBossBar(new LiteralText("Boss bar"), BossBar.Color.WHITE, BossBar.Style.PROGRESS);
+    private final BossBar placeholder = new CustomBossBar(Text.literal("Boss bar"), BossBar.Color.WHITE, BossBar.Style.PROGRESS);
     private final BossBar placeholder2 = Util.make(() -> {
-        BossBar boss = new CustomBossBar(new LiteralText("More boss bars..."), BossBar.Color.PURPLE, BossBar.Style.PROGRESS);
+        BossBar boss = new CustomBossBar(Text.literal("More boss bars..."), BossBar.Color.PURPLE, BossBar.Style.PROGRESS);
         boss.setPercent(0.45F);
         return boss;
     });
@@ -132,7 +132,7 @@ public class BossBarHud extends AbstractHudEntry {
     }
 
     public static class CustomBossBar extends BossBar {
-        public CustomBossBar(Text name, Color color, Style style) {
+        public CustomBossBar(Text name, net.minecraft.entity.boss.BossBar.Color color, Style style) {
             super(MathHelper.randomUuid(), name, color, style);
         }
     }
